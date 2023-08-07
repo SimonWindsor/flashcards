@@ -1,9 +1,9 @@
-import { createSlice } from '@reduxjs/tookit';
+import { createSlice } from "@reduxjs/toolkit";
 
-export const addQuizForTopicId = (payload) => {
+export const addQuizForTopicId = (newQuiz) => {
   return (dispatch) => {
-    dispatch(quizzesSlice.actions.addQuiz(paylaod));
-    dispatch({type: 'topics/addQuizId', payload: payload});
+    dispatch({type: 'quizzes/addQuiz', payload: newQuiz});
+    //dispatch({type: 'topics/addQuizId', payload: newQuiz});
   };
 }
 
@@ -20,3 +20,4 @@ export const quizzesSlice = createSlice({
 });
 
 export const selectQuizzes = (state) => state.quizzes.quizzes;
+export const { addQuiz } = quizzesSlice.actions;
