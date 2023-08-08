@@ -3,7 +3,10 @@ import { createSlice } from "@reduxjs/toolkit";
 export const addQuizForTopicId = (newQuiz) => {
   return (dispatch) => {
     dispatch({type: 'quizzes/addQuiz', payload: newQuiz});
-    //dispatch({type: 'topics/addQuizId', payload: newQuiz});
+    dispatch({type: 'topics/addQuizId', payload: {
+      quizId: newQuiz.id,
+      topicId: newQuiz.topicId
+    }});
   };
 }
 
@@ -14,7 +17,7 @@ export const quizzesSlice = createSlice({
   },
   reducers: {
     addQuiz: (state, action) => {
-      state.quizzes[action.payload.quizId] = action.payload;
+      state.quizzes[action.payload.id] = action.payload;
     }
   }
 });
